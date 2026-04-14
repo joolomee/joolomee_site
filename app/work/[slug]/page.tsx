@@ -40,7 +40,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           </ul>
         </header>
 
-        <div className={`mt-16 aspect-[16/9] bg-gradient-to-br ${project.color} flex items-center justify-center`}>
+        <div className={`mt-16 aspect-[16/9] rounded-2xl overflow-hidden bg-gradient-to-br ${project.accent} flex items-center justify-center shadow-soft`}>
           <span className="display text-white/30 text-[20vw] md:text-[10vw]">{project.client.split(' ')[0]}</span>
         </div>
 

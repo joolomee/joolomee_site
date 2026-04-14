@@ -1,33 +1,46 @@
+'use client';
 import { SITE } from '@/lib/data';
 import Reveal from './Reveal';
+import { useLocale } from './LocaleProvider';
 
 export default function ContactCTA() {
+  const { t } = useLocale();
   return (
-    <section id="contact" className="py-32 md:py-48 border-t border-line">
-      <div className="container-site">
-        <p className="mono text-xs uppercase tracking-[0.25em] text-text-muted mb-10">— Contact</p>
+    <section id="contact" className="relative py-28 md:py-44 bg-bg-contrast text-text-inverse overflow-hidden">
+      <div className="absolute inset-0 bg-grad-dusk opacity-60 pointer-events-none" aria-hidden />
+      <div className="container-site relative">
+        <p className="mono text-[11px] uppercase tracking-[0.28em] text-white/50 mb-10">— {t('contactLabel')}</p>
         <Reveal>
-          <h2 className="display text-[12vw] md:text-[10vw] leading-[0.88] tracking-[-0.04em]">
-            Let's build<br />
-            something <span className="text-accent italic font-normal">extraordinary.</span>
+          <h2 className="display text-[12vw] md:text-[8.5vw] leading-[0.9] tracking-ultra-tight">
+            {t('contactTitle1')}<br />
+            {t('contactTitle2')}{' '}
+            <span className="script italic font-normal text-accent-soft">{t('contactTitle3')}</span>
           </h2>
         </Reveal>
-        <p className="text-text-secondary text-xl mt-10 max-w-xl">
-          Available for new projects — remote worldwide. Full stack from concept to launch.
+        <p className="text-white/70 text-lg md:text-xl mt-10 max-w-xl leading-relaxed">
+          {t('contactSub')}
         </p>
 
-        <div className="mt-16 grid md:grid-cols-2 gap-6 max-w-3xl">
-          <a href={`mailto:${SITE.email}`} className="group border border-line hover:border-accent transition-colors p-8 flex items-start justify-between gap-4">
+        <div className="mt-14 grid md:grid-cols-2 gap-4 max-w-3xl">
+          <a
+            href={`mailto:${SITE.email}`}
+            className="group bg-white/5 border border-white/10 hover:border-accent hover:bg-accent/10 rounded-2xl transition-all p-7 flex items-start justify-between gap-4 backdrop-blur-sm"
+          >
             <div>
-              <span className="mono text-xs uppercase tracking-[0.2em] text-text-muted block mb-3">Email</span>
-              <span className="display text-2xl md:text-3xl">{SITE.email}</span>
+              <span className="mono text-[10px] uppercase tracking-[0.22em] text-white/50 block mb-3">Email</span>
+              <span className="display text-xl md:text-2xl">{SITE.email}</span>
             </div>
             <span className="mono text-lg group-hover:text-accent group-hover:translate-x-1 transition-all">↗</span>
           </a>
-          <a href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="group border border-line hover:border-accent transition-colors p-8 flex items-start justify-between gap-4">
+          <a
+            href={`https://wa.me/${SITE.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group bg-white/5 border border-white/10 hover:border-accent hover:bg-accent/10 rounded-2xl transition-all p-7 flex items-start justify-between gap-4 backdrop-blur-sm"
+          >
             <div>
-              <span className="mono text-xs uppercase tracking-[0.2em] text-text-muted block mb-3">WhatsApp</span>
-              <span className="display text-2xl md:text-3xl">Direct message →</span>
+              <span className="mono text-[10px] uppercase tracking-[0.22em] text-white/50 block mb-3">WhatsApp</span>
+              <span className="display text-xl md:text-2xl">{SITE.phone}</span>
             </div>
             <span className="mono text-lg group-hover:text-accent group-hover:translate-x-1 transition-all">↗</span>
           </a>

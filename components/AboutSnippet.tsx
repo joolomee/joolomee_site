@@ -1,32 +1,47 @@
+'use client';
 import { STATS } from '@/lib/data';
 import Link from 'next/link';
+import Image from 'next/image';
 import Reveal from './Reveal';
+import { useLocale } from './LocaleProvider';
 
 export default function AboutSnippet() {
+  const { t } = useLocale();
   return (
-    <section className="py-32 md:py-48 border-t border-line">
-      <div className="container-site grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
+    <section className="py-28 md:py-40 bg-bg">
+      <div className="container-site grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
         <div className="md:col-span-7">
-          <p className="mono text-xs uppercase tracking-[0.25em] text-text-muted mb-6">— About</p>
+          <p className="mono text-[11px] uppercase tracking-[0.28em] text-text-muted mb-6">— {t('aboutLabel')}</p>
           <Reveal>
-            <p className="display text-[8vw] md:text-[4.5vw] leading-[1.05] tracking-[-0.03em]">
-              I'm Joana — a full stack designer &amp; creative director working at the intersection of brand, code, and craft.
+            <p className="display text-[8vw] md:text-[4.2vw] leading-[1.05] tracking-[-0.03em] text-text-primary">
+              {t('aboutLead')}
             </p>
           </Reveal>
-          <p className="text-text-secondary text-lg mt-10 max-w-xl">
-            Seven years building visual systems for brands that want to matter. From cognitive health platforms translated to 22 languages, to luxury farm hotels, to corporate decks — every project is treated as a portfolio piece.
-          </p>
-          <Link href="/about" className="mono text-xs uppercase tracking-[0.2em] link-underline mt-10 inline-flex">
-            More about me →
+          <Reveal delay={0.1}>
+            <p className="text-text-secondary text-[17px] md:text-lg mt-10 max-w-xl leading-relaxed">
+              {t('aboutBody')}
+            </p>
+          </Reveal>
+          <Link href="/about" className="mono text-[11px] uppercase tracking-[0.22em] link-underline mt-10 inline-flex">
+            {t('aboutCta')} →
           </Link>
         </div>
 
-        <div className="md:col-span-5 md:border-l border-line md:pl-10 flex flex-col justify-end">
-          <ul className="grid grid-cols-3 gap-4">
+        <div className="md:col-span-5 flex flex-col gap-10">
+          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-soft bg-accent-cream">
+            <Image
+              src="/logos/joolomee-full.jpg"
+              alt="Joolomee — Remember me."
+              fill
+              sizes="(min-width:768px) 35vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <ul className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-2 gap-4">
             {STATS.map((s) => (
-              <li key={s.label} className="border-t border-line pt-6">
-                <span className="display text-5xl md:text-6xl block">{s.n}</span>
-                <span className="mono text-xs uppercase tracking-[0.2em] text-text-muted mt-3 block">{s.label}</span>
+              <li key={s.label} className="border-t border-line pt-5">
+                <span className="display text-4xl md:text-5xl block text-text-primary">{s.n}</span>
+                <span className="mono text-[10px] uppercase tracking-[0.22em] text-text-muted mt-2 block">{s.label}</span>
               </li>
             ))}
           </ul>
