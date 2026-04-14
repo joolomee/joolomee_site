@@ -1,4 +1,4 @@
-import { SERVICES, SITE } from '@/lib/data';
+import { SERVICES, SITE, COPY } from '@/lib/data';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -18,20 +18,24 @@ export default function ServicesPage() {
         </p>
 
         <div className="mt-24 grid gap-16 md:gap-20">
-          {SERVICES.map((s) => (
-            <article key={s.n} className="grid grid-cols-12 gap-4 md:gap-8 border-t border-line pt-10">
-              <span className="col-span-12 md:col-span-1 mono text-sm text-accent">{s.n}</span>
-              <div className="col-span-12 md:col-span-6">
-                <h2 className="display text-4xl md:text-6xl tracking-[-0.03em] leading-[1.05]">{s.title}</h2>
-              </div>
-              <div className="col-span-12 md:col-span-5">
-                <p className="text-lg text-text-secondary leading-relaxed">{s.desc}</p>
-                <a href={`mailto:${SITE.email}?subject=${encodeURIComponent(s.title + ' inquiry')}`} className="mono text-xs uppercase tracking-[0.2em] link-underline mt-6 inline-flex">
-                  Inquire →
-                </a>
-              </div>
-            </article>
-          ))}
+          {SERVICES.map((s) => {
+            const title = COPY.en[s.key] ?? '';
+            const desc = COPY.en[`${s.key}d`] ?? '';
+            return (
+              <article key={s.n} className="grid grid-cols-12 gap-4 md:gap-8 border-t border-line pt-10">
+                <span className="col-span-12 md:col-span-1 mono text-sm text-accent">{s.n}</span>
+                <div className="col-span-12 md:col-span-6">
+                  <h2 className="display text-4xl md:text-6xl tracking-[-0.03em] leading-[1.05]">{title}</h2>
+                </div>
+                <div className="col-span-12 md:col-span-5">
+                  <p className="text-lg text-text-secondary leading-relaxed">{desc}</p>
+                  <a href={`mailto:${SITE.email}?subject=${encodeURIComponent(title + ' inquiry')}`} className="mono text-xs uppercase tracking-[0.2em] link-underline mt-6 inline-flex">
+                    Inquire →
+                  </a>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

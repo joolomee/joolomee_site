@@ -37,10 +37,10 @@ export default function Services() {
               <Link href="/services" className="grid grid-cols-12 gap-4 md:gap-8 items-start py-7 md:py-9 px-2 -mx-2 hover:bg-bg-secondary rounded-lg transition-colors">
                 <span className="col-span-2 md:col-span-1 mono text-sm text-accent font-medium">{s.n}</span>
                 <h3 className="col-span-10 md:col-span-5 display text-3xl md:text-[2.8rem] leading-[1.05] tracking-[-0.03em] text-text-primary group-hover:translate-x-2 transition-transform duration-500">
-                  {s.title}
+                  {t(s.key)}
                 </h3>
                 <p className="col-span-12 md:col-span-5 text-text-secondary text-[15px] md:text-[17px] leading-relaxed">
-                  {s.desc}
+                  {t(`${s.key}d`)}
                 </p>
                 <span className="col-span-12 md:col-span-1 md:justify-self-end mono text-base text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all">↗</span>
               </Link>

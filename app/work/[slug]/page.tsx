@@ -1,4 +1,4 @@
-import { WORK } from '@/lib/data';
+import { WORK, COPY } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -10,9 +10,11 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const p = WORK.find((w) => w.slug === params.slug);
   if (!p) return {};
+  const title = COPY.en[p.titleKey] ?? p.client;
+  const category = COPY.en[p.categoryKey] ?? '';
   return {
-    title: `${p.client} — ${p.title}`,
-    description: `${p.category} case study — ${p.client}. ${p.title}. By Joana Lopes Mesquita (Joolomee).`,
+    title: `${p.client} — ${title}`,
+    description: `${category} case study — ${p.client}. ${title}. By Joana Lopes Mesquita (Joolomee).`,
     alternates: { canonical: `https://joolomee.com/work/${p.slug}` },
   };
 }
@@ -22,6 +24,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   if (!project) return notFound();
   const idx = WORK.findIndex((w) => w.slug === project.slug);
   const next = WORK[(idx + 1) % WORK.length];
+  const title = COPY.en[project.titleKey] ?? project.client;
+  const category = COPY.en[project.categoryKey] ?? '';
 
   return (
     <article className="pt-32 pb-32">
@@ -29,13 +33,13 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         <Link href="/work" className="mono text-xs uppercase tracking-[0.2em] link-underline text-text-secondary">← Back to work</Link>
         <header className="mt-12 grid md:grid-cols-12 gap-8 items-end">
           <div className="md:col-span-8">
-            <p className="mono text-xs uppercase tracking-[0.25em] text-text-muted mb-4">{project.category} · {project.year}</p>
+            <p className="mono text-xs uppercase tracking-[0.25em] text-text-muted mb-4">{category} · {project.year}</p>
             <h1 className="display text-[14vw] md:text-[8vw] leading-[0.9] tracking-[-0.04em]">{project.client}</h1>
-            <p className="display text-3xl md:text-4xl mt-6 text-text-secondary">{project.title}</p>
+            <p className="display text-3xl md:text-4xl mt-6 text-text-secondary">{title}</p>
           </div>
           <ul className="md:col-span-4 flex flex-wrap gap-2 md:justify-end">
-            {project.tags.map((t) => (
-              <li key={t} className="mono text-[10px] uppercase tracking-[0.2em] border border-line px-3 py-1.5">{t}</li>
+            {project.tags.map((tag) => (
+              <li key={tag} className="mono text-[10px] uppercase tracking-[0.2em] border border-line px-3 py-1.5">{tag}</li>
             ))}
           </ul>
         </header>

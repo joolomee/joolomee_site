@@ -39,9 +39,9 @@ export default function AboutSnippet() {
           </div>
           <ul className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-2 gap-4">
             {STATS.map((s) => (
-              <li key={s.label} className="border-t border-line pt-5">
+              <li key={s.labelKey} className="border-t border-line pt-5">
                 <span className="display text-4xl md:text-5xl block text-text-primary">{s.n}</span>
-                <span className="mono text-[10px] uppercase tracking-[0.22em] text-text-muted mt-2 block">{s.label}</span>
+                <span className="mono text-[10px] uppercase tracking-[0.22em] text-text-muted mt-2 block">{t(s.labelKey)}</span>
               </li>
             ))}
           </ul>

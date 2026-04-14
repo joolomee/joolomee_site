@@ -74,8 +74,13 @@ export default function Hero() {
               <a href={`mailto:${SITE.email}`} className="link-underline mono text-[12px] uppercase tracking-[0.18em] text-text-primary">
                 {SITE.email} ↗
               </a>
-              <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="link-underline mono text-[12px] uppercase tracking-[0.18em] text-text-secondary">
-                {SITE.phone}
+              <a
+                href={`https://wa.me/${SITE.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline mono text-[12px] uppercase tracking-[0.18em] text-text-secondary"
+              >
+                WhatsApp ↗
               </a>
             </div>
             <div className="flex items-center gap-3 flex-wrap">

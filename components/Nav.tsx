@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { NAV_LINKS, SITE } from '@/lib/data';
 import { useLocale } from './LocaleProvider';
@@ -21,10 +22,10 @@ export default function Nav() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500
-      ${scrolled ? 'bg-bg/75 backdrop-blur-2xl border-b border-line' : 'bg-transparent'}`}>
+      ${scrolled ? 'bg-bg/80 backdrop-blur-2xl border-b border-line' : 'bg-transparent'}`}>
       <div className="container-site flex items-center justify-between h-16 md:h-20">
         <Link href="/" aria-label="Joolomee — Home" className="flex items-center gap-2.5 group">
-          <span className="inline-block w-2.5 h-2.5 rounded-full bg-accent group-hover:scale-125 transition-transform" />
+          <Image src="/logos/joolomee-small.png" alt="" width={28} height={28} priority className="w-7 h-7 object-contain group-hover:rotate-[12deg] transition-transform duration-500" />
           <span className="font-display text-sm md:text-[15px] font-bold tracking-[0.18em] text-text-primary">JOOLOMEE</span>
         </Link>
 
@@ -38,6 +39,12 @@ export default function Nav() {
               {navLabel(l.key)}
             </Link>
           ))}
+          <Link
+            href="/quiz"
+            className="link-underline text-[13.5px] font-medium text-accent hover:text-accent-deep transition-colors"
+          >
+            {t('navQuiz')}
+          </Link>
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
@@ -50,7 +57,7 @@ export default function Nav() {
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen(!open)}
-          className="md:hidden mono text-[11px] uppercase tracking-[0.2em]"
+          className="md:hidden text-xl"
         >
           {open ? '✕' : '≡'}
         </button>
@@ -64,6 +71,9 @@ export default function Nav() {
                 {navLabel(l.key)}
               </Link>
             ))}
+            <Link href="/quiz" onClick={() => setOpen(false)} className="display text-5xl text-accent">
+              {t('navQuiz')}
+            </Link>
             <div className="pt-4 border-t border-line flex items-center justify-between gap-4">
               <LangSwitcher />
               <a href={`mailto:${SITE.email}`} className="mono text-xs uppercase tracking-[0.2em] text-accent">

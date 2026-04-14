@@ -1,47 +1,29 @@
 'use client';
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-
 /**
- * A scroll-linked pink yarn thread that unfurls down the entire page.
- * Fixed full-height SVG on the left gutter; pathLength animates with scroll.
+ * Decorative, CSS-only SVG. Static — no scroll listeners, no rAF.
+ * Positioned as a thin aside on desktop, absolute (not fixed) to avoid
+ * blocking paint and composite on every scroll frame.
  */
 export default function YarnStoryline() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll();
-  const smooth = useSpring(scrollYProgress, { stiffness: 80, damping: 20, mass: 0.4 });
-  const pathLength = useTransform(smooth, [0, 1], [0, 1]);
-  const opacity = useTransform(smooth, [0, 0.02, 0.95, 1], [0, 1, 1, 0.4]);
-
   return (
-    <div
-      ref={ref}
-      aria-hidden
-      className="pointer-events-none fixed inset-0 z-0 hidden lg:block"
-    >
-      <svg viewBox="0 0 200 2000" preserveAspectRatio="none" className="w-full h-full">
+    <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden hidden lg:block">
+      <svg
+        viewBox="0 0 200 3600"
+        preserveAspectRatio="none"
+        className="absolute top-0 left-[3vw] w-[120px] h-full opacity-[0.35]"
+      >
         <defs>
           <linearGradient id="yarn-grad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#FF4D8F" stopOpacity="0.9" />
-            <stop offset="50%" stopColor="#FF7AA9" stopOpacity="0.75" />
-            <stop offset="100%" stopColor="#C73666" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#C73666" stopOpacity="0.5" />
           </linearGradient>
-          <filter id="yarn-blur"><feGaussianBlur stdDeviation="0.6" /></filter>
         </defs>
-        <motion.path
-          d="M 100 0
-             C 140 120, 60 200, 100 320
-             C 140 420, 40 500, 90 620
-             C 140 740, 60 820, 110 940
-             C 150 1060, 50 1140, 100 1260
-             C 150 1360, 60 1460, 100 1580
-             C 140 1700, 60 1800, 100 2000"
+        <path
+          d="M 100 0 C 160 200, 40 380, 100 560 C 160 740, 40 920, 100 1100 C 160 1280, 40 1460, 100 1640 C 160 1820, 40 2000, 100 2180 C 160 2360, 40 2540, 100 2720 C 160 2900, 40 3080, 100 3260 C 160 3440, 100 3560, 100 3600"
           fill="none"
           stroke="url(#yarn-grad)"
-          strokeWidth="1.6"
+          strokeWidth="1.2"
           strokeLinecap="round"
-          filter="url(#yarn-blur)"
-          style={{ pathLength, opacity }}
         />
       </svg>
     </div>

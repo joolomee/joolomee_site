@@ -39,8 +39,8 @@ export default function ContactCTA() {
             className="group bg-white/5 border border-white/10 hover:border-accent hover:bg-accent/10 rounded-2xl transition-all p-7 flex items-start justify-between gap-4 backdrop-blur-sm"
           >
             <div>
-              <span className="mono text-[10px] uppercase tracking-[0.22em] text-white/50 block mb-3">WhatsApp</span>
-              <span className="display text-xl md:text-2xl">{SITE.phone}</span>
+              <span className="mono text-[10px] uppercase tracking-[0.22em] text-white/50 block mb-3">{t('contactWhatsLabel')}</span>
+              <span className="display text-xl md:text-2xl">{t('contactWhatsCta')}</span>
             </div>
             <span className="mono text-lg group-hover:text-accent group-hover:translate-x-1 transition-all">↗</span>
           </a>

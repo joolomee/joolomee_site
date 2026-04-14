@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { WORK } from '@/lib/data';
+import { WORK, COPY } from '@/lib/data';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function WorkPage() {
               <Link href={`/work/${p.slug}`} className="grid grid-cols-12 gap-4 py-10 items-center hover:bg-bg-elevated transition-colors px-2 group">
                 <span className="col-span-2 md:col-span-1 mono text-sm text-accent">{String(i + 1).padStart(2, '0')}</span>
                 <span className="col-span-10 md:col-span-5 display text-3xl md:text-5xl tracking-[-0.03em] group-hover:translate-x-2 transition-transform">{p.client}</span>
-                <span className="col-span-6 md:col-span-3 mono text-xs uppercase tracking-[0.2em] text-text-secondary">{p.category}</span>
+                <span className="col-span-6 md:col-span-3 mono text-xs uppercase tracking-[0.2em] text-text-secondary">{COPY.en[p.categoryKey] ?? ''}</span>
                 <span className="col-span-5 md:col-span-2 mono text-xs uppercase tracking-[0.2em] text-text-muted">{p.year}</span>
                 <span className="col-span-1 md:col-span-1 justify-self-end mono text-lg group-hover:text-accent">↗</span>
               </Link>

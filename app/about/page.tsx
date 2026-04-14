@@ -1,4 +1,4 @@
-import { STATS, SITE } from '@/lib/data';
+import { STATS, SITE, COPY } from '@/lib/data';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -38,9 +38,9 @@ export default function AboutPage() {
           <aside className="md:col-span-4 md:col-start-9">
             <ul className="grid grid-cols-3 gap-4">
               {STATS.map((s) => (
-                <li key={s.label} className="border-t border-line pt-5">
+                <li key={s.labelKey} className="border-t border-line pt-5">
                   <span className="display text-4xl block">{s.n}</span>
-                  <span className="mono text-[10px] uppercase tracking-[0.2em] text-text-muted mt-2 block">{s.label}</span>
+                  <span className="mono text-[10px] uppercase tracking-[0.2em] text-text-muted mt-2 block">{COPY.en[s.labelKey]}</span>
                 </li>
               ))}
             </ul>
