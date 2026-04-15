@@ -37,7 +37,7 @@ export default function Quiz() {
   const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
-    <section className="min-h-[100svh] pt-28 md:pt-32 pb-28 bg-grad-cream">
+    <section className="min-h-[100svh] pt-28 md:pt-32 pb-28 bg-bg-secondary">
       <div className="container-site max-w-4xl">
         <AnimatePresence mode="wait">
           {step === -1 && (
@@ -114,7 +114,7 @@ export default function Quiz() {
               >
                 <p className="mono text-[11px] uppercase tracking-[0.28em] text-accent mb-6">— {t('quizResult')}</p>
                 <h1 className="display text-[18vw] md:text-[11vw] leading-[0.85] tracking-ultra-tight text-text-primary">
-                  <span className="script italic font-normal text-accent">{t(`result${r}`)}.</span>
+                  <span className="italic text-text-secondary font-normal">{t(`result${r}`)}.</span>
                 </h1>
                 <p className="text-text-secondary text-lg md:text-xl mt-10 max-w-2xl leading-relaxed">
                   {t(`result${r}d`)}

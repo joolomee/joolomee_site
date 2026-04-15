@@ -6,43 +6,42 @@ import { useLocale } from './LocaleProvider';
 export default function ContactCTA() {
   const { t } = useLocale();
   return (
-    <section id="contact" className="relative py-28 md:py-44 bg-bg-contrast text-text-inverse overflow-hidden">
-      <div className="absolute inset-0 bg-grad-dusk opacity-60 pointer-events-none" aria-hidden />
-      <div className="container-site relative">
-        <p className="mono text-[11px] uppercase tracking-[0.28em] text-white/50 mb-10">— {t('contactLabel')}</p>
+    <section id="contact" className="relative py-32 md:py-48 bg-bg">
+      <div className="container-site">
+        <p className="mono text-[11px] uppercase tracking-[0.22em] text-text-muted mb-10">{t('contactLabel')}</p>
         <Reveal>
-          <h2 className="display text-[12vw] md:text-[8.5vw] leading-[0.9] tracking-ultra-tight">
+          <h2 className="display text-[12vw] md:text-[7.2vw] leading-[0.94] tracking-[-0.045em] text-text-primary max-w-[20ch]">
             {t('contactTitle1')}<br />
             {t('contactTitle2')}{' '}
-            <span className="script italic font-normal text-accent-soft">{t('contactTitle3')}</span>
+            <span className="italic text-text-secondary font-normal">{t('contactTitle3')}</span>
           </h2>
         </Reveal>
-        <p className="text-white/70 text-lg md:text-xl mt-10 max-w-xl leading-relaxed">
+        <p className="text-text-secondary text-[17px] md:text-[19px] mt-10 max-w-xl leading-[1.55]">
           {t('contactSub')}
         </p>
 
-        <div className="mt-14 grid md:grid-cols-2 gap-4 max-w-3xl">
+        <div className="mt-16 grid md:grid-cols-2 gap-4 max-w-3xl">
           <a
             href={`mailto:${SITE.email}`}
-            className="group bg-white/5 border border-white/10 hover:border-accent hover:bg-accent/10 rounded-2xl transition-all p-7 flex items-start justify-between gap-4 backdrop-blur-sm"
+            className="group border border-line hover:border-text-primary rounded-2xl transition-colors p-7 flex items-start justify-between gap-4 bg-bg-secondary"
           >
             <div>
-              <span className="mono text-[10px] uppercase tracking-[0.22em] text-white/50 block mb-3">Email</span>
-              <span className="display text-xl md:text-2xl">{SITE.email}</span>
+              <span className="mono text-[10px] uppercase tracking-[0.22em] text-text-muted block mb-3">Email</span>
+              <span className="display text-xl md:text-2xl text-text-primary">{SITE.email}</span>
             </div>
-            <span className="mono text-lg group-hover:text-accent group-hover:translate-x-1 transition-all">↗</span>
+            <span className="mono text-lg text-text-muted group-hover:text-text-primary group-hover:translate-x-1 transition-all">↗</span>
           </a>
           <a
             href={`https://wa.me/${SITE.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="group bg-white/5 border border-white/10 hover:border-accent hover:bg-accent/10 rounded-2xl transition-all p-7 flex items-start justify-between gap-4 backdrop-blur-sm"
+            className="group border border-line hover:border-text-primary rounded-2xl transition-colors p-7 flex items-start justify-between gap-4 bg-bg-secondary"
           >
             <div>
-              <span className="mono text-[10px] uppercase tracking-[0.22em] text-white/50 block mb-3">{t('contactWhatsLabel')}</span>
-              <span className="display text-xl md:text-2xl">{t('contactWhatsCta')}</span>
+              <span className="mono text-[10px] uppercase tracking-[0.22em] text-text-muted block mb-3">{t('contactWhatsLabel')}</span>
+              <span className="display text-xl md:text-2xl text-text-primary">{t('contactWhatsCta')}</span>
             </div>
-            <span className="mono text-lg group-hover:text-accent group-hover:translate-x-1 transition-all">↗</span>
+            <span className="mono text-lg text-text-muted group-hover:text-text-primary group-hover:translate-x-1 transition-all">↗</span>
           </a>
         </div>
       </div>

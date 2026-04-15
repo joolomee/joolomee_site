@@ -12,7 +12,7 @@ export default function Footer() {
           </div>
           <p className="display text-4xl md:text-5xl leading-[1] tracking-[-0.035em] text-text-primary">
             Remember me,<br />
-            <span className="script italic font-normal text-accent">Joolomee.</span>
+            <span className="italic text-text-secondary font-normal">Joolomee.</span>
           </p>
           <a href={`mailto:${SITE.email}`} className="mono text-[11px] uppercase tracking-[0.22em] mt-7 inline-flex items-center gap-2 link-underline text-text-primary">
             {SITE.email} ↗
