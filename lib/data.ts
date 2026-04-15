@@ -55,7 +55,7 @@ export const WORK: Project[] = [
     titleKey: 'workCognifitTitle',
     categoryKey: 'catWeb',
     year: '2022 — 2026',
-    tags: ['Landing Pages', 'Email Campaigns', 'Marketing Design', 'UI/UX'],
+    tags: ['Landing Pages', 'Game UI', 'Email Campaigns', 'Marketing Design'],
     hero: '/work/cognifit-mindfit-hero.png',
     accent: 'from-[#0B3B8C] via-[#1A73E8] to-[#6FB6FF]',
   },

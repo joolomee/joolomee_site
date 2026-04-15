@@ -21,27 +21,48 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 /* Gallery images per project */
-const GALLERIES: Record<string, { src: string; alt: string }[]> = {
+const GALLERIES: Record<string, { label?: string; images: { src: string; alt: string }[] }[]> = {
   'cognifit': [
-    { src: '/work/cognifit-mindfit-app.png', alt: 'CogniFit MindFit — app interface' },
-    { src: '/work/cognifit-email-halloween.png', alt: 'CogniFit — Halloween email campaign' },
-    { src: '/work/cognifit-blackfriday.png', alt: 'CogniFit — Black Friday campaign' },
-    { src: '/work/cognifit-cybermonday.png', alt: 'CogniFit — Cyber Monday campaign' },
-    { src: '/work/cognifit-spring-sales.png', alt: 'CogniFit — Spring sales campaign' },
-    { src: '/work/cognifit-newyear.png', alt: 'CogniFit — New Year campaign' },
-    { src: '/work/cognifit-benefits.png', alt: 'CogniFit — Five Benefits infographic' },
+    { label: 'Web & App Design', images: [
+      { src: '/work/cognifit-mindfit-hero.png', alt: 'CogniFit MindFit — landing page design' },
+      { src: '/work/cognifit-mindfit-app.png', alt: 'CogniFit MindFit — app interface design' },
+    ]},
+    { label: 'Game UI Design', images: [
+      { src: '/work/cognifit-game-mahjong.png', alt: 'CogniFit — Mahjong brain game UI' },
+      { src: '/work/cognifit-game-solitaire.png', alt: 'CogniFit — Solitaire brain game UI' },
+      { src: '/work/cognifit-game-antescape.png', alt: 'CogniFit — Antescape brain game UI' },
+    ]},
+    { label: 'Email Campaigns', images: [
+      { src: '/work/cognifit-onboarding.png', alt: 'CogniFit — onboarding email flow' },
+      { src: '/work/cognifit-email-halloween.png', alt: 'CogniFit — Halloween email campaign' },
+      { src: '/work/cognifit-halloween-2.png', alt: 'CogniFit — Halloween campaign variant' },
+      { src: '/work/cognifit-christmas.png', alt: 'CogniFit — Christmas B2C campaign' },
+      { src: '/work/cognifit-newyear.png', alt: 'CogniFit — New Year campaign' },
+      { src: '/work/cognifit-womensday.png', alt: "CogniFit — Women's Day B2C campaign" },
+    ]},
+    { label: 'Seasonal & Sales Campaigns', images: [
+      { src: '/work/cognifit-blackfriday.png', alt: 'CogniFit — Black Friday campaign' },
+      { src: '/work/cognifit-cybermonday.png', alt: 'CogniFit — Cyber Monday campaign' },
+      { src: '/work/cognifit-spring-sales.png', alt: 'CogniFit — Spring sales campaign' },
+      { src: '/work/cognifit-family-sales.png', alt: 'CogniFit — Family sales campaign' },
+      { src: '/work/cognifit-benefits.png', alt: 'CogniFit — Five Benefits infographic' },
+    ]},
   ],
   'dalma-farmliving': [
-    { src: '/work/dalma-mel-label.png', alt: "D'ALMA — Honey label design" },
+    { label: 'Brand Identity & Packaging', images: [
+      { src: '/work/dalma-mel-full.png', alt: "D'ALMA — complete honey brand system" },
+      { src: '/work/dalma-mel-label.png', alt: "D'ALMA — honey label design" },
+      { src: '/work/dalma-logo-system.png', alt: "D'ALMA — logo system" },
+    ]},
   ],
 };
 
 /* Project descriptions */
 const DESCRIPTIONS: Record<string, { context: string; challenge: string; solution: string }> = {
   'cognifit': {
-    context: 'CogniFit is a global leader in cognitive health and brain training. As Full Stack Designer, I was responsible for the complete design and development of web pages, email marketing campaigns, and digital marketing materials across multiple languages and markets.',
-    challenge: 'The brand needed a consistent, high-quality visual presence across landing pages, seasonal email campaigns, onboarding flows, and paid advertising — all while maintaining brand coherence across dozens of markets and languages.',
-    solution: 'Designed and developed responsive landing pages, created comprehensive email campaign systems (seasonal promotions, onboarding, retention), and built marketing materials for Black Friday, Cyber Monday, Halloween, holidays, and awareness campaigns. Every piece was crafted for conversion while staying true to the brand.',
+    context: 'CogniFit is a global leader in cognitive health and brain training, serving millions of users worldwide. As Full Stack Designer, I led the design of web pages, game interfaces, email marketing campaigns, and digital marketing materials across multiple languages and markets.',
+    challenge: 'The brand needed a consistent, high-quality visual presence across landing pages, game UIs, seasonal email campaigns, onboarding flows, and paid advertising — all while maintaining brand coherence across dozens of markets and languages.',
+    solution: 'Designed responsive landing pages and app interfaces, created brain game UIs (Mahjong, Solitaire, Antescape), built comprehensive email campaign systems (onboarding, seasonal promotions, retention), and produced marketing materials for Black Friday, Cyber Monday, Christmas, Halloween and more — all crafted for conversion while staying true to the brand.',
   },
   'dalma-farmliving': {
     context: "D'ALMA Farm Living is a luxury farm hotel and organic commerce project in the Algarve, Portugal. The brand needed a complete identity that would convey both the luxury of the hospitality experience and the authenticity of their organic products.",
@@ -120,14 +141,21 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         {/* Image gallery */}
         {gallery.length > 0 && (
           <div className="mt-24">
-            <p className="mono text-xs uppercase tracking-[0.2em] text-text-muted mb-8">Gallery</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {gallery.map((img) => (
-                <div key={img.src} className="relative aspect-[4/3] rounded-xl overflow-hidden bg-bg-secondary">
-                  <Image src={img.src} alt={img.alt} fill sizes="(min-width:768px) 50vw, 100vw" className="object-contain" />
+            <p className="mono text-xs uppercase tracking-[0.2em] text-text-muted mb-12">Gallery</p>
+            {gallery.map((section) => (
+              <div key={section.label ?? 'default'} className="mb-16 last:mb-0">
+                {section.label && (
+                  <h3 className="display text-xl md:text-2xl tracking-[-0.02em] text-text-primary mb-6">{section.label}</h3>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {section.images.map((img) => (
+                    <div key={img.src} className="relative aspect-[4/3] rounded-xl overflow-hidden bg-bg-secondary">
+                      <Image src={img.src} alt={img.alt} fill sizes="(min-width:768px) 50vw, 100vw" className="object-contain" />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         )}
 
