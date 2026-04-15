@@ -9,9 +9,9 @@ import { useLocale } from './LocaleProvider';
 /* Only projects with real, delivered imagery appear on the homepage.
    Everything else lives in /work as a typographic index. */
 const REAL: Record<string, { src: string; alt: string }> = {
-  'cognifit-longevity': {
+  'cognifit': {
     src: '/work/cognifit-mindfit-hero.png',
-    alt: 'CogniFit MindFit — cognitive health platform landing page',
+    alt: 'CogniFit — full stack design, web & marketing campaigns',
   },
   'dalma-farmliving': {
     src: '/work/dalma-mel-full.png',

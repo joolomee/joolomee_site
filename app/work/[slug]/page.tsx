@@ -22,7 +22,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 
 /* Gallery images per project */
 const GALLERIES: Record<string, { src: string; alt: string }[]> = {
-  'cognifit-longevity': [
+  'cognifit': [
     { src: '/work/cognifit-mindfit-app.png', alt: 'CogniFit MindFit — app interface' },
     { src: '/work/cognifit-email-halloween.png', alt: 'CogniFit — Halloween email campaign' },
     { src: '/work/cognifit-blackfriday.png', alt: 'CogniFit — Black Friday campaign' },
@@ -38,10 +38,10 @@ const GALLERIES: Record<string, { src: string; alt: string }[]> = {
 
 /* Project descriptions */
 const DESCRIPTIONS: Record<string, { context: string; challenge: string; solution: string }> = {
-  'cognifit-longevity': {
-    context: 'CogniFit is a global leader in cognitive health, serving millions of users in 22 languages. As Full Stack Designer, I led the redesign of their Longevity platform, marketing campaigns, and digital presence.',
-    challenge: 'The existing platform needed a complete visual overhaul to match modern standards — responsive design, fast loading, and a cohesive brand experience across landing pages, email campaigns, and advertising materials in multiple languages.',
-    solution: 'Designed and developed responsive landing pages with Next.js, created a comprehensive email campaign system (seasonal promotions, onboarding flows, retention campaigns), and built marketing materials for Black Friday, Cyber Monday, holidays, and awareness campaigns — all localized across 22 languages.',
+  'cognifit': {
+    context: 'CogniFit is a global leader in cognitive health and brain training. As Full Stack Designer, I was responsible for the complete design and development of web pages, email marketing campaigns, and digital marketing materials across multiple languages and markets.',
+    challenge: 'The brand needed a consistent, high-quality visual presence across landing pages, seasonal email campaigns, onboarding flows, and paid advertising — all while maintaining brand coherence across dozens of markets and languages.',
+    solution: 'Designed and developed responsive landing pages, created comprehensive email campaign systems (seasonal promotions, onboarding, retention), and built marketing materials for Black Friday, Cyber Monday, Halloween, holidays, and awareness campaigns. Every piece was crafted for conversion while staying true to the brand.',
   },
   'dalma-farmliving': {
     context: "D'ALMA Farm Living is a luxury farm hotel and organic commerce project in the Algarve, Portugal. The brand needed a complete identity that would convey both the luxury of the hospitality experience and the authenticity of their organic products.",

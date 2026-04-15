@@ -50,12 +50,12 @@ export type Project = {
 
 export const WORK: Project[] = [
   {
-    slug: 'cognifit-longevity',
+    slug: 'cognifit',
     client: 'CogniFit',
     titleKey: 'workCognifitTitle',
     categoryKey: 'catWeb',
     year: '2022 — 2026',
-    tags: ['Landing Pages', 'Responsive Web', 'Marketing Design', 'Campaign Banners'],
+    tags: ['Landing Pages', 'Email Campaigns', 'Marketing Design', 'UI/UX'],
     hero: '/work/cognifit-mindfit-hero.png',
     accent: 'from-[#0B3B8C] via-[#1A73E8] to-[#6FB6FF]',
   },
@@ -225,7 +225,7 @@ const en: T = {
   workLabel: 'Selected Work', workTitle: 'Featured projects.', workCta: 'View all work',
   catWeb: 'Web Design & Development', catBrand: 'Brand Identity', catMotion: 'Presentation & Motion',
   catCreative: 'Creative Direction', catGraphic: 'Graphic Design', catMulti: 'Multi-discipline',
-  workCognifitTitle: 'Cognitive Health Platform — Longevity',
+  workCognifitTitle: 'Full Stack Design — Web, Campaigns & Marketing',
   workDalmaTitle: 'Luxury Farm Hotel & Bio Commerce',
   workTcpiTitle: 'Corporate Communications — Deck & Motion',
   workDualTitle: 'Aesthetic Clinic Campaigns',
@@ -314,7 +314,7 @@ const pt: T = {
   workLabel: 'Trabalho Selecionado', workTitle: 'Projetos em destaque.', workCta: 'Ver todos os trabalhos',
   catWeb: 'Web Design & Dev', catBrand: 'Identidade de Marca', catMotion: 'Apresentação & Motion',
   catCreative: 'Direção Criativa', catGraphic: 'Design Gráfico', catMulti: 'Multidisciplinar',
-  workCognifitTitle: 'Plataforma de Saúde Cognitiva — Longevity',
+  workCognifitTitle: 'Full Stack Design — Web, Campanhas & Marketing',
   workDalmaTitle: 'Hotel Rural de Luxo & Comércio Bio',
   workTcpiTitle: 'Comunicação Corporativa — Deck & Motion',
   workDualTitle: 'Campanhas para Clínica Estética',
